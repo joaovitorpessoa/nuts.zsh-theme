@@ -7,6 +7,13 @@ function git_prompt_info() {
   fi
 }
 
+function shouldDisplayZeroPrefix() {
+  hour=$(date +%H)
+  if [[ "$(echo $hour | head -c 1)" == "0" ]]; then
+    echo "0"
+  fi
+}
+
 PROMPT='%{$fg_bold[cyan]%}%c$(git_prompt_info)%(?:%{$fg_bold[white]%}:%{$fg_bold[red]%}) ▶%{$reset_color%} '
 RPROMPT='%{$fg[red]%}%*%{$reset_color%}'
 
